@@ -43,7 +43,7 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    // fix to generate ranfom nomber
+    // fix to generate ranfom number
     ofSeedRandom(39);
     
     // begin fbo
@@ -57,8 +57,8 @@ void ofApp::update(){
         cam.lookAt(ofVec3f(0, 0, 0), ofVec3f(0, -1, 0));
 
     
-    ofClear(159, 255, 255);
-    ofSetColor(0);
+    ofClear(0);
+    ofSetColor(159, 255, 255);
     ofNoFill();
     ofDrawSphere(ofVec3f(0), 850);
     ofFill();
@@ -95,7 +95,7 @@ void ofApp::update(){
             // if distance is less than 200 then connect i and j particles
             if (dist < 300) {
                 //ofSetColor(198, 156, 197, ofMap(dist, 0, 200, 255, 0));
-                ofSetColor(0, ofMap(dist, 0, 300, 255, 0));
+                ofSetColor(159, 255, 255, ofMap(dist, 0, 300, 255, 0));
                 ofNoFill();
                 ofDrawSphere(point_i, r * 0.3);
                 ofFill();
@@ -105,11 +105,11 @@ void ofApp::update(){
         
         // draw particle
         //ofSetColor(198, 156, 197);
-        ofSetColor(0, 100);
+        ofSetColor(159, 255, 255, 50);
         ofNoFill();
         ofDrawSphere(locations[i], r);
         
-        ofSetColor(0);
+        ofSetColor(159, 255, 255);
         ofFill();
         ofDrawSphere(locations[i], ofMap(min_dist, 0, 300, r*0.7, 0));
     }
@@ -118,18 +118,6 @@ void ofApp::update(){
     this->cam.end();
     this->fbo.end();
     
-//    float noise_value;
-//    for (int y=0; y < this->y_noise.size(); y++) {
-//        if (y % 72 == 0) {
-//            noise_value = ofMap(ofNoise(y * 0.05, ofGetFrameNum() * 0.03), 0, 1, -1, 1);
-//
-//            if      (noise_value > 0.65)    { noise_value -= 0.65; }
-//            else if (noise_value < -0.65)   { noise_value += 0.65; }
-//            else                            { noise_value = 0.0; }
-//        }
-//
-//        this->y_noise[y] = noise_value;
-//    }
 }
 
 //--------------------------------------------------------------
